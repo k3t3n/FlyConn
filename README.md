@@ -1,5 +1,11 @@
-# flycircuit
-## A Circuit Analysis: Connectivity Based Classification of the Drosophila Brain
+# A Circuit Analysis of the Drosophila Brain using Connectivity Based Classification
+
+
+This repository contains example code for the circuit analysis described in the following paper:
+
+**Circuit Analysis of the Drosophila Brain using Connectivity-based Neuronal Classification Reveals Organization of Key Information Processing Pathways**, by Ketan Mehta, Rebecca F. Goldin, and Giorgio A. Ascoli.
+
+## Contents
 
 **`generate_connectomes`** : Generate stochastic binary connectomes using FlyCircuit Data
 
