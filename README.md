@@ -1,11 +1,12 @@
 # flycircuit
-A Circuit Analysis: Connectivity Based Classification of the Drosophila Brain
+## A Circuit Analysis: Connectivity Based Classification of the Drosophila Brain
+
+**`generate_connectomes`** : Generate stochastic binary connectomes using FlyCircuit Data
 
 nat_flycircuit_neuronlist.rds - scraped from Natverse
 
 A_str.rds - strength matrix (same as A_conn, but with corrected names)
 
-generate_connectomes: Generate stochastic binary connectomes using FlyCircuit Data
 
 automatic picking of the dimenisonalty of embedding parameter using the scree plot
 
