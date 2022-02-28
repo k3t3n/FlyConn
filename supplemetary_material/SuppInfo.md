@@ -2,7 +2,7 @@
 
 `ARI.xlsx` : Pairwise ARI values for different combinations of parameter choices.
 
-`labels.xlsx` : Different labels and 
+`labels.xlsx` : Assigned labels for each connectivity-based class. Additional sheets include supplemental data calculated for each class, along with a summary of the procedure used to assign the corresponding labels.
 
 ## Movie
 
