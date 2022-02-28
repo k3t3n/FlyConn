@@ -2,30 +2,30 @@ This repository contains code and data to reproduce the results described in **C
 
 ## Contents
 
-**`data`** :
-  - nat_flycircuit_neuronlist.rds - scraped from Natverse
-  - A_str.rds - strength matrix (same as A_conn, but with corrected names)
+**`data`**
+  - Flycircuit neuron list along with other metadata and descriptors
+  - Strength connectome from FlyCircuit data
 
-
-**`generate_connectomes`** : Generate stochastic binary connectomes using FlyCircuit Data
-
-**`para_d`** : Automatic picking of the dimenisonalty of embedding parameter using the scree plot
+**`generate_connectomes`**
+  - Generate stochastic binary connectomes using FlyCircuit Data
+  - Automatic picking of the dimenisonalty of embedding parameter using the scree plot
 
 **`clustering`**
-  - MBHAC_clustering
-  - IVC Consensus Clustering Iterative Voting_clustering
-  - final_clustering
+  - MBHAC Clustering
+  - IVC Consensus Clustering
+  - Creating the final connectivity-based classes
+  - Obtaining the edge probabilities by paramterizing as a SBM 
 
 **`stat_analysis`**
-  - nmi: normalized mutual information to compare different classification schemes
-  - ari: Adjusted Rand index 
+  - NMI: normalized mutual information to compare different classification schemes
+  - ARI: adjusted Rand index 
 
 **`labels`**
-  - classification-labels
-  - graph-theoretic labels
+  - Classification labels
+  - Graph-theoretic labels
 
-**`random_walk`** : absorbtion-driftiness
+**`random_walk`** : Performing random walk on the connectivity-based circuit absorbtion-driftiness
 
-**`spad`**
+**`spad`** : Spatial distribution of the neurons using FlyCricuit and NatVerse atlas
 
-**`morph_pvec`**
+**`morph_pvec`** : Morphology and persistence vector classification
