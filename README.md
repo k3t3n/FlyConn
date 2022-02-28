@@ -2,31 +2,30 @@ This repository contains code and data to reproduce the results described in **C
 
 ## Contents
 
+**`data`** :
+  - nat_flycircuit_neuronlist.rds - scraped from Natverse
+  - A_str.rds - strength matrix (same as A_conn, but with corrected names)
+
+
 **`generate_connectomes`** : Generate stochastic binary connectomes using FlyCircuit Data
 
-nat_flycircuit_neuronlist.rds - scraped from Natverse
+**`para_d`** : Automatic picking of the dimenisonalty of embedding parameter using the scree plot
 
-A_str.rds - strength matrix (same as A_conn, but with corrected names)
+**`clustering`**
+  - MBHAC_clustering
+  - IVC Consensus Clustering Iterative Voting_clustering
+  - final_clustering
 
+**`stat_analysis`**
+  - nmi: normalized mutual information to compare different classification schemes
+  - ari: Adjusted Rand index 
 
-automatic picking of the dimenisonalty of embedding parameter using the scree plot
+**`labels`**
+  - classification-labels
+  - graph-theoretic labels
 
-MBHAC_clustering
+**`random_walk`** : absorbtion-driftiness
 
-IVC - Consensus Clustering Iterative Voting_clustering
+**`spad`**
 
-final_clustering
-
-nmi - normalized mutual information to compare different classification schemes
-
-ari - Adjusted Rand index 
-
-classification-labels
-
-graph-theoretic labels
-
-absorbtion-driftiness
-
-spad
-
-morph-pvec
+**`morph_pvec`**
