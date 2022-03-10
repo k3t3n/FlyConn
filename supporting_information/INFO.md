@@ -7,7 +7,7 @@
 `S3_Fig.pdf` **Neurotransmitter pathways.**
 
 `S4_Fig.pdf` **3D spatial embedding of each class.**
-<!--- Each connectivity-class is visualed in a 3D template of the Drosophila brain using the natverse package. For each class we show the embeddings of each of its constieunt neruons. For each class we registered the Each neuron. The dominant neuropils for each class are also highlighted (highlighted (as a yellow colored underlay)  The Virtual Fly Brain interface allows users to explore the structure of the by browsing 3D images of a brain with subregions displayed as coloured overlays.-->
+<!--- Each connectivity-class visualed using a 3D template of the Drosophila brain using the natverse package. For each class we show the embeddings of each of its constieunt neruons. For each class we registered the Each neuron. The dominant neuropils for each class are also highlighted (highlighted (as a yellow colored underlay)  The Virtual Fly Brain interface allows users to explore the structure of the by browsing 3D images of a brain with subregions displayed as coloured overlays.-->
 
 ## Excel Files
 
