@@ -2,7 +2,14 @@
 
 `ARI.xlsx` : Pairwise ARI values for different combinations of parameter choices.
 
-`labels.xlsx` : Assigned labels for each connectivity-based class. Additional sheets include supplemental data calculated for each class, along with a summary of the procedure used to assign the corresponding labels.
+`labels.xlsx` :
+  - Sheet 1: Assigned labels for each connectivity-based class.
+  - Sheet Label Description:
+  - abc
+  - 
+  - 
+  - The red cells the lowest column-wise. The green cell highlights the maximum clolumn value.  
+  - Additional sheets include supplemental data calculated for each class, along with a summary of the procedure used to assign the corresponding labels.
 
 ## Movie
 
