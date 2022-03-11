@@ -11,9 +11,7 @@
 
 ## Excel Files
 
-`S1_File.xlsx` **ARI results.** Pairwise ARI values for different combinations of parameter choices.
-
-`S2_File.xlsx` **Class labels and data.**
+`S1_File.xlsx` **Class labels and data.**
   - Sheet *Labels*: Assigned descriptor labels for each connectivity-based class.
   - Sheet *Label Description*: Brief summary of the procedure used to determine the labels (listed in the previous sheet).
   - Sheet *data_conditional_prob*: Posterior probability $p(Y=j|X=i)$, e.g., that the neuron is associated with the j-th functional-anatomical community, given that it belongs to the i-th connectivity-based class. Also, lists the prior probabilites for comparison.
@@ -21,6 +19,8 @@
   - Sheet *data_spad*: Statistics for the neuropil (spatial) distribution of each class.
   - Sheet *data_morph+pvec*: Statistics for the morphological and persistence vector of each class.
   - The red cells highlight the column minimum. While, the green cells highlight the column maximum.
+
+`S2_File.xlsx` **ARI results.** Pairwise ARI values for different combinations of parameter choices.
 
 
 ## Movies
