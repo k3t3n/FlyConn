@@ -1,12 +1,12 @@
-## Supplemetary Figures
+## Extended Figures
 
 `Figure 1-1.pdf` **Random walk path length.**
 
 `Table 2-1.pdf` **Scree plot.**
 
-`Figure 3-1` **Neurotransmitter pathways.**
+`Figure 3-1.pdf` **Neurotransmitter pathways.**
 
-`Figure 1-5` **3D spatial embedding of each class.**
+`Figure 1-5.pdf` **3D spatial embedding of each class.**
 
 
 ## Excel Files
