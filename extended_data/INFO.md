@@ -11,7 +11,7 @@
 
 ## Supplementary Table
 
-`Table T1.pdf` Characterizing information flow on the circuit based on absorption and driftiness values of nodes.
+`Table T1.pdf` Characterizing information flow on the circuit based on absorption and driftiness values of classes.
 
 
 ## Excel Files
