@@ -1,22 +1,17 @@
-## Supplementary Figures
+## Extended Figures
 
-`Figure S1.pdf` **Random walk path length.**
+`Figure 1-1.pdf` **Random walk path length.**
 
-`Figure S2.pdf` **3D spatial embedding of each class.**
+`Table 2-1.pdf` **Scree plot.**
 
-`Table S3.pdf` **Scree plot.**
+`Figure 3-1.pdf` **Neurotransmitter pathways.**
 
-`Figure S4.pdf` **Neurotransmitter pathways.**
-
-
-## Supplementary Table
-
-`Table T1.pdf` Characterizing information flow on the circuit based on absorption and driftiness values of classes.
+`Figure 1-5.pdf` **3D spatial embedding of each class.**
 
 
 ## Excel Files
 
-`File F1.xlsx` **Class labels and data.**
+`Figure 1-2.xlsx` **Class labels and data.**
   - Sheet *Labels*: Assigned descriptor labels for each connectivity-based class.
   - Sheet *Label Description*: Brief summary of the procedure used to determine the labels (listed in the previous sheet).
   - Sheet *data_conditional_prob*: Posterior probability $p(Y=j|X=i)$, e.g., that the neuron is associated with the j-th functional-anatomical community, given that it belongs to the i-th connectivity-based class. Also, lists the prior probabilites for comparison.
@@ -25,11 +20,11 @@
   - Sheet *data_morph+pvec*: Statistics for the morphological and persistence vector of each class.
   - The red cells highlight the column minimum. While, the green cells highlight the column maximum.
 
-`File F2.xlsx` **ARI results.** Pairwise ARI values for different combinations of parameter choices.
+`Table 2-2.xlsx` **ARI results.** Pairwise ARI values for different combinations of parameter choices.
 
 
 ## Movies
 
-`Movie M1.mp4` **Critical growth per day.** The clip consists of 10 circuits, each corresponding to one day. This clip tracks the growth (and activity) of the circuit over the span of 10 days. If a node in the circuit has no birthed neurons until that particular day, then that node is "grayed out" and considered to be as yet inactive (unborn). For each day, the nodes that exhibit a critical growth period are colored, and so are the critical edges.
+`Figure 1-3.mp4` **Critical growth per day.** The clip consists of 10 circuits, each corresponding to one day. This clip tracks the growth (and activity) of the circuit over the span of 10 days. If a node in the circuit has no birthed neurons until that particular day, then that node is "grayed out" and considered to be as yet inactive (unborn). For each day, the nodes that exhibit a critical growth period are colored, and so are the critical edges.
 
-`Movie M2.mp4` **Critical growth time periods.** Similar to the S1_Movie but instead of each day, it shows circuit growth grouped into four time periods, (i) embryo, (ii) early (day1-day3), (iii) mid (day4-day6), and (iv) late (day7-day9).
+`Figure 1-4.mp4` **Critical growth time periods.** Similar to the S1_Movie but instead of each day, it shows circuit growth grouped into four time periods, (i) embryo, (ii) early (day1-day3), (iii) mid (day4-day6), and (iv) late (day7-day9).
