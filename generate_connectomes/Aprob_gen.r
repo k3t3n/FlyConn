@@ -1,4 +1,4 @@
-Aprob_gen <- function(mean_conn=0.5)
+Aprob_gen <- function(mean_conn=0.5, A_conn)
 # select the desired mean connectivity
 {
 
@@ -12,7 +12,7 @@ Aprob_gen <- function(mean_conn=0.5)
 
 
     ## load matrix
-    A_conn = readRDS('/media/WDHDD/clustering/exp/data/A_conn.rds')
+    # A_conn = readRDS('../data/A_conn.rds')
 
 
     ### remove all-zero zero rows and columns
