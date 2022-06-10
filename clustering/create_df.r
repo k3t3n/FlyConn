@@ -123,30 +123,5 @@ if(create_dataframe)
     create.df(all_classification, df.filename, num.graphs)
 }
 
-# ##--
-# if (remove_miss_vertices)
-# {
-#     cat("\n**CAUTION** Need to create new dataframe!!")
-#     browser()
-#     df = readRDS('/media/WDHDD/clustering/exp/ARGO/P05/MBHAC/data/df_removed_g100_d--.rds")
-#     cat("\nLoaded removed/cleaned data set!")
-# } else{
-#     df.filename = paste("/media/WDHDD/clustering/exp/ARGO/P05/MBHAC/data/df_g100_d",d.used,".rds",sep="")
-#     df = readRDS(df.filename)
-#     cat("\nLoaded entire data set!")
-# }
-#
-# ##--create mcl list
-# mcl <- list()
-# for(i in 1:num.graphs)
-# {
-#     mcl[[i]] = df[,(i+1)]
-#     if (!remove_miss_vertices)
-#         mcl[[i]][which(is.na(mcl[[i]]))]=0
-# }
-#
-# if (!remove_miss_vertices)
-#     cat("\nAll missing vertices assigned as 0 !!")
-
 cat("\n\n*****************************************************************")
 cat("\n** Done! Program terminated successfully **")

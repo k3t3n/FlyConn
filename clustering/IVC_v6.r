@@ -1,9 +1,9 @@
 ## ----------------------------------------------------------------------------
 ##--Preamble
-library(tictoc,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(foreach,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(iterators,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(doParallel,lib.loc="/home/kmehta7/R/3.5.2/library/")
+library(tictoc)
+library(foreach)
+library(iterators)
+library(doParallel)
 # library(tictoc)
 # library(foreach)
 # library(doParallel)
@@ -15,6 +15,36 @@ getmode <- function(v) {
    uniqv[which.max(tabulate(match(v, uniqv)))]
 }
 
+
+
+## ----------------------------------------------------------------------------
+## Create a data frame of all clusterings
+create.df <- function(all_classification, df.filename, num.graphs)
+{
+        # Aconn = readRDS("/media/WDHDD/clustering/exp/data/A_conn.rds")
+        # neuron_name = attributes(Aconn)$Dimnames[[1]]
+
+        neuron_name = readRDS("../data/neuron_names.rds")
+        df=data.frame("neuron_name"=neuron_name)
+
+        for(gr.index in 1:num.graphs)
+        {
+            cat("\nWorking on graph",gr.index)
+            temp=rep(NA,length(neuron_name))
+            gr.name = paste("../data/binary_adj_matrix/A50/A50_",toString(gr.index),".rds",sep="")
+            Ap = readRDS(gr.name)
+            for (v.index in 1:length(neuron_name))
+            {
+                 p.index = which( attributes(Ap)$Dimnames[[1]] == neuron_name[v.index] )
+                 if(length(p.index)!=0)  temp[v.index] = all_classification[[gr.index]][p.index]
+            }
+            df = cbind(df,temp)
+            names(df)[(gr.index+1)] = paste("G",toString(gr.index),sep="")
+        }
+
+        saveRDS(df,file=df.filename)
+        return(df)
+}
 
 
 
@@ -97,22 +127,131 @@ clustering.labels <- function(pi, verbose=FALSE)
 
 
 
+# ## ----------------------------------------------------------------------------
+# ## Reshape clustering label list
+# clustering.labels <- function(pi, verbose=FALSE)
+# {
+#         num.of.vertices = length(pi[[1]])
+#         clust_lab = list()
+#         if(verbose) cat('\nInitializing list..')
+#         for (node_num in c(1:num.of.vertices))
+#         {
+#             clust_lab[[node_num]] = rep(0,length(pi))
+#         }
+#         if(verbose) cat('\nList Done!')
+#         for ( d in c(1:length(pi)) )
+#         {
+#             if(verbose) cat('\nWorking on run #',d)
+#             m = pi[[d]]
+#             for (node_num in c(1:length(m)))
+#             {
+#                clust_lab[[node_num]][d] = m[node_num]
+#             }
+#        }
+#        return(clust_lab)
+# } #end function
+
+
+
+
+## ----------------------------------------------------------------------------
+## Co-association matrix
+coass <- function(clust_lab)
+{
+        n = length(clust_lab)
+        coass_matrix = array(rep(0,1),dim=c(n,n))
+
+
+        for (i in 1:n)
+        {
+            for (j in 1:n)
+            {
+                coass_matrix[i,j] = sum( (clust_lab[[i]]==clust_lab[[j]])*1 )
+            } #j
+
+        } #i
+
+        return(coass_matrix)
+} #end function
+
+
+
 
 ## ----------------------------------------------------------------------------
 ##
-remove_miss_vertices  = FALSE
-trial.range           = c(101,200) #which trials/graphs to choose
-num.graphs            = 800
-file.descrip          = "P05_MBHAC_4to100_d11"
-input.dir             = "/home/kmehta7/exp/IVC/data/"
+put.togther <- function(CM, label = rep(0,n), sum_threshold,
+                        verbose = FALSE, seed.num=0)
+{
+  n = nrow(CM)
+  # label = rep(0,n)
+  available_index=1
 
+  if(seed.num)
+  {
+      set.seed(seed.num)
+      order.n = sample(n)
+  } else {order.n=1:n}
+
+  for(i in order.n)
+  {
+      if(label[i]==0)
+      {
+        label[i] = available_index
+        available_index = available_index + 1
+      }
+
+      same_as_i = which(CM[i,] >= sum_threshold)
+      all_zero = same_as_i[which(label[same_as_i]==0)]
+      label[all_zero] = label[i]
+      matched_labels = unique(label[same_as_i])
+      assignment_label = min(matched_labels)
+      if(assignment_label==0) stop('\n\nERROR!! Check assignment_label\n')
+# browser()
+      for(j in matched_labels)
+        label[which(label==j)] = assignment_label
+
+  } #i
+
+  if(verbose)
+      print(sort(table(label),decreasing=TRUE))
+
+
+  return(label)
+} #end function
+
+
+
+
+
+
+
+###############################################################################
+###############################################################################
+## user input
+## ----------------------------------------------------------------------------
+remove_miss_vertices  = FALSE
+trial.range           = c(1,5) #which trials/graphs to choose
+num.graphs            = 5
+num.cores             = 5
+create_dataframe      = TRUE
+file.descrip          = "MBHAC_results"
+input.dir             = "./output/"
+tau = 0.95
 
 ## auto generating file names
 df.filename = paste(input.dir,"df_",file.descrip,"_g",num.graphs,".rds",sep="")
-output.filename = paste("/scratch/kmehta7/IVC_",file.descrip,"_g",trial.range[1],"_g",trial.range[2],".rData",sep="")
-num.cores = 40
+IVC.filename = paste(input.dir,"IVC_",file.descrip,"_g",trial.range[1],"_g",trial.range[2],".rData",sep="")
 
 
+load(paste(input.dir,file.descrip,".rData",sep=""))
+if(create_dataframe)
+{
+    cat("\nCreating new dataframe")
+    cat("\n------------------------\n")
+    create.df(all_classification, df.filename, num.graphs)
+}
+
+browser()
 ##--The clusterings 'pi'
 df = readRDS(df.filename)
 num.trials = trial.range[2]-trial.range[1]+1 #length(df)-1
@@ -124,13 +263,7 @@ for(i in 1:num.trials)
         pi[[i]][which(is.na(pi[[i]]))]=0
 }
 
-# pi      = list()
-# pi[[1]] = c(1,1,1,2,2,2,2,2,1)
-# pi[[2]] = c(2,2,1,1,1,1,1,1,1)
-# pi[[3]] = c(1,1,2,2,2,2,2,3,3)
-# pi[[4]] = c(1,2,2,2,2,2,2,3,3)
-# pi[[5]] = c(1,1,1,3,2,2,2,3,3)
-# num.trials = length(pi)
+
 
 ## ----------------------------------------------------------------------------
 ##--Clustering assignment of each data point (across all clusterings) 'y_j'
@@ -172,10 +305,55 @@ while (n < num.trials)
 }
 
 
-save(pi, pi_new, file=output.filename)
+save(pi, pi_new, file=IVC.filename)
 
 cat("\n\n**********************************************************************")
 cat("\n** Program terminated successfully ** "); toc()
 cat("**********************************************************************\n")
 
 ##
+
+browser()
+## auto generating filenames
+IVC.filename = paste("./output/IVC_",file.descrip,".rData",sep="")
+CM.filename = paste("./output/CM_",file.descrip,".rds",sep="")
+output.filename = paste("./output/cl_",file.descrip,".rds",sep="")
+
+# load data
+load(IVC.filename); rm(pi)
+num.trials = length(pi_new)
+
+
+
+final_classification_list <- vector(mode='list',length=num.trials)
+
+num.vertices = length(pi_new[[1]]) ; cat('\n\nNumber of vertices:',num.vertices)
+
+
+
+        cat('\n\nNumber of graphs/trials combined:',num.trials)
+
+        clust_lab = clustering.labels(pi_new)
+
+        if(file.exists(CM.filename))
+        {
+          CM = readRDS(CM.filename)
+          cat('\n\nLoaded existing coassociation matrix!')
+        } else{
+          cat('\n\nCreating NEW coassociation matrix..')
+          CM = coass(clust_lab)
+          saveRDS(CM, file=CM.filename)
+        }
+        diag(CM) = num.trials
+
+        cat('\n\nTau set at:',tau,'\n')
+
+        for( sum_threshold in c( (num.trials): round(tau*num.trials) ) )
+        {
+            final_classification_list[[sum_threshold]] = put.togther(CM=CM,sum_threshold=sum_threshold)
+        }
+
+saveRDS(final_classification_list,file=output.filename)
+
+cat("\n\n******************************************")
+cat("\n** Done! Program terminated successfully **\n\n")

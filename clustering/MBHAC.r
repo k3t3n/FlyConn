@@ -1,31 +1,30 @@
-
 ## ----------------------------------------------------------------------------
 ## Packages
 
-library(igraph,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(coda,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(MCMCpack,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(mclust,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(Matrix,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(RSpectra,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(fpc,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(clusterCrit,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(withr,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(crayon,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(ggplot2,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(e1071,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(caret,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(tictoc,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(foreach,lib.loc="/home/kmehta7/R/3.5.2/library/")
+library(igraph)
+library(coda)
+library(MCMCpack)
+library(mclust)
+library(Matrix)
+library(RSpectra)
+library(fpc)
+library(clusterCrit)
+library(withr)
+library(crayon)
+library(ggplot2)
+library(e1071)
+library(caret)
+library(tictoc)
+library(foreach)
 # library(Rmpi)
-library(iterators,lib.loc="/home/kmehta7/R/3.5.2/library/")
-# library(doMPI,lib.loc="/home/kmehta7/R/3.5.2/library/")
-library(doParallel,lib.loc="/home/kmehta7/R/3.5.2/library/")
+library(iterators)
+# library(doMPI)
+library(doParallel)
 
 cat("\014")     # clear screen
 rm(list=ls())   # clean workspace
 # if (!is.null(dev.list())) dev.off()   # close open x11 windows
-setwd("/home/kmehta7/exp/P05/MBHAC/") # set working directory
+# setwd("/home/kmehta7/exp/P05/MBHAC/") # set working directory
 
 
 
@@ -162,6 +161,7 @@ graph.spectral.embedding <- function( A,
 ## Running the Simulations
 
 runSimulator <- function(
+  input_graphs = "../data/binary_adj_matrix/A50/A50_",
   n=19902,
   groups=c(15768,4000,1000,3000,2000,2500,2500,2000),
   num.cores= 1,
@@ -227,7 +227,7 @@ runSimulator <- function(
                     set.seed(sd)
 
                     ##-- Adjacency Matrix
-                    A.name = paste("/home/kmehta7/exp/P05/binary_adj_matrix/A50/A50_",as.character(graph_number),".rds",sep="")
+                    A.name = paste(input_graphs,as.character(graph_number),".rds",sep="")
                     bin_A = readRDS(A.name)
                     bin_A = unname(bin_A)
 
@@ -281,29 +281,32 @@ runSimulator <- function(
 # Intialize variables
 tic(" Total Time")
 
+# set filename for input data. These should point to the stochastc binary graphs
+input_graphs = "../data/binary_adj_matrix/A50/A50_"
+
 # create output directory
-outdir= "/scratch/kmehta7"
+outdir= "./output/"
 dir.create(outdir,recursive=TRUE,showWarnings=FALSE)
 
-# set filename
-filename = "P05_MBHAC_4to100_d15_g100_x1"
+# set filename for output data
+filename = "MBHAC_results"
 
 # save as .txt file
 # sink(paste(outdir,"/",filename,".txt",sep=""))
 
 num_runs            = 1
-num.of.graphs       = 100
+num.of.graphs       = 2
 graph_start_offset  = 0
-gr                  = 4:100
-d_ind               = 15
-num.cores           = 20
+gr                  = 4:10
+d_ind               = 11
+num.cores           = 1
 
 
 seedlist <- readRDS("seed_list.rds")
 
 
 # call main function
-mainrun <- runSimulator(Grange=gr, num.of.graphs=num.of.graphs, graph_start_offset=graph_start_offset, d=d_ind, num.cores=num.cores)
+mainrun <- runSimulator(input_graphs=input_graphs, Grange=gr, num.of.graphs=num.of.graphs, graph_start_offset=graph_start_offset, d=d_ind, num.cores=num.cores)
 
 
 
