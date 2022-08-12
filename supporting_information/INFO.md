@@ -4,7 +4,7 @@
 
 `Figure S2.pdf` **3D spatial embedding of each class.**
 
-`Table S3.pdf` **Scree plot.**
+`Figure S3.pdf` **Scree plot.**
 
 `Figure S4.pdf` **Neurotransmitter pathways.**
 
