@@ -8,6 +8,8 @@
 
 `Figure S4.pdf` **Neurotransmitter pathways.**
 
+`Figure S5.pdf` **Block connectivity probability matrix.**
+
 
 ## Supplementary Table
 
