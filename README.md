@@ -1,4 +1,4 @@
-This repository contains code and data to reproduce the results described in **Circuit Analysis of the Drosophila Brain using Connectivity-based Neuronal Classification Reveals Organization of Key Information Processing Pathways**, by Ketan Mehta, Rebecca F. Goldin, and Giorgio A. Ascoli.
+This repository contains code and data to reproduce the results described in **Circuit Analysis of the Drosophila Brain using Connectivity-based Neuronal Classification Reveals Organization of Key Communication Pathways**, by Ketan Mehta, Rebecca F. Goldin, and Giorgio A. Ascoli.
 
 ## Contents
 
