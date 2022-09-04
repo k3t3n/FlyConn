@@ -6,14 +6,14 @@
 
 `Figure S3.pdf` **Scree plot.**
 
-`Figure S4.pdf` **Neurotransmitter pathways.**
+`Figure S4.pdf` **Block connectivity probability matrix.**
 
-`Figure S5.pdf` **Block connectivity probability matrix.**
+`Figure S5.pdf` **Neurotransmitter pathways.**
 
 
 ## Supplementary Table
 
-`Table T1.pdf` Characterizing information flow on the circuit based on absorption and driftiness values of classes.
+`Table T1.xlsx` Characterizing connectivity patterns on the circuit based on absorption and driftiness values of classes.
 
 
 ## Excel Files
