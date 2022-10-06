@@ -1,4 +1,4 @@
-This repository contains code and data to reproduce the results described in **Circuit Analysis of the Drosophila Brain using Connectivity-based Neuronal Classification Reveals Organization of Key Communication Pathways**, by Ketan Mehta, Rebecca F. Goldin, and Giorgio A. Ascoli.
+This repository contains code, data, and relevant information to replicate the analysis and results described in **Circuit Analysis of the Drosophila Brain using Connectivity-based Neuronal Classification Reveals Organization of Key Communication Pathways**, by Ketan Mehta, Rebecca F. Goldin, and Giorgio A. Ascoli.
 
 ## Contents
 
@@ -29,3 +29,5 @@ This repository contains code and data to reproduce the results described in **C
 **`spad`** : Spatial distribution of the neurons using FlyCricuit and natverse atlas
 
 **`morph_pvec`** : Morphology and persistence vector classification
+
+**`supporting_information`** : Supplementary figures, tables, files and movie-clips.
