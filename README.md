@@ -26,6 +26,6 @@ This repository contains code and data to reproduce the results described in **C
 
 **`random_walk`** : Performing random walk on the connectivity-based circuit absorbtion-driftiness
 
-**`spad`** : Spatial distribution of the neurons using FlyCricuit and NatVerse atlas
+**`spad`** : Spatial distribution of the neurons using FlyCricuit and natverse atlas
 
 **`morph_pvec`** : Morphology and persistence vector classification
